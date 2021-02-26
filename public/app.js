@@ -42,10 +42,6 @@ const addTodo = document.getElementById("add-todo-btn"); // create thing
 const todoList = document.getElementById("todo-list"); // thing list
 const todoInput = document.getElementById("add-todo-input");
 
-const handleChange = (event) => {
-  return event.target.value;
-};
-
 let inputValue;
 todoInput.addEventListener(
   "change",
