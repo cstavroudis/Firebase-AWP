@@ -38,9 +38,17 @@ auth.onAuthStateChanged((user) => {
 // FIRESTORE  – CONNECTING TO DATABASE
 const db = firebase.firestore();
 
-const addTodo = document.getElementById("add-todo");
-const todoList = document.getElementById("todo-list");
+const addTodo = document.getElementById("add-todo-btn"); // create thing
+const todoList = document.getElementById("todo-list"); // thing list
+const todoInput = document.getElementById("add-todo-input");
 
+const handleChange = (event) => {
+  return event.target.value;
+};
+
+let inputValue;
+todoInput.handleChange("change", (event) => (inputValue = event.target.value));
+console.log("inputValue", inputValue);
 // need 2 things when accessing database from firestore in realtime stream
 //  1. Reference to a database location:
 let thingsRef;
@@ -55,12 +63,13 @@ let unsubscribe; // tell app when to stop listening to realtime stream
 auth.onAuthStateChanged((user) => {
   if (user) {
     // database reference
-    thingsRef = db.collection("things");
+    thingsRef = db.collection("todos");
+    // createThing.onClick
     addTodo.addEventListener("click", (event) => {
       const { serverTimestamp } = firebase.firestore.FieldValue;
       thingsRef.add({
         uid: user.uid, // User has-many things
-        name: event.target.value,
+        name: inputValue,
         createdAt: serverTimestamp(),
       });
     });
