@@ -47,7 +47,10 @@ const handleChange = (event) => {
 };
 
 let inputValue;
-todoInput.handleChange("change", (event) => (inputValue = event.target.value));
+todoInput.addEventListener(
+  "change",
+  (event) => (inputValue = event.target.value)
+);
 console.log("inputValue", inputValue);
 // need 2 things when accessing database from firestore in realtime stream
 //  1. Reference to a database location:
