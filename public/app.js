@@ -35,6 +35,8 @@ auth.onAuthStateChanged((user) => {
   }
 });
 
+//
+//
 // FIRESTORE  – CONNECTING TO DATABASE
 const db = firebase.firestore();
 
@@ -43,21 +45,20 @@ const todoList = document.getElementById("todo-list"); // thing list
 const todoInput = document.getElementById("add-todo-input");
 
 let inputValue;
-todoInput.addEventListener(
-  "change",
-  (event) => (inputValue = event.target.value)
-);
-console.log("inputValue", inputValue);
+todoInput.addEventListener("change", (event) => {
+  inputValue = event.target.value;
+  console.log("inputValue", inputValue);
+});
+
 // need 2 things when accessing database from firestore in realtime stream
 //  1. Reference to a database location:
 let thingsRef;
 let unsubscribe; // tell app when to stop listening to realtime stream
 
-// function updateTodo(event) {
-//   const db = firebase.firestore();
-//   const myPost = db.collection("posts").doc("firstpost");
-//   myPost.update({ title: event.target.value });
-// }
+// GOALS:
+//  * render todos already in database,
+//  * delete todos
+//  * edit todos
 
 auth.onAuthStateChanged((user) => {
   if (user) {
