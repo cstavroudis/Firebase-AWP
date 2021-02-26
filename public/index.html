@@ -31,12 +31,13 @@
       firebase.analytics();
     </script>
     <script defer src="app.js"></script>
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
-    />
+    /> -->
+    <link rel="stylesheet" href="/style.css" />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
       integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
@@ -57,9 +58,17 @@
     <section>
       <h2>My Firestore Things</h2>
       <ul id="todo-list"></ul>
-      <label for="add-toto">Add todo:</label>
-      <input type="text" name="add-todo" id="add-todo-input" />
-      <button id="add-todo-btn" class="btn btn-success">Submit Todo</button>
+      <div id="add-todo-container">
+        <label for="add-toto" id="add-todo-label">Add todo:</label>
+        <input
+          type="text"
+          name="add-todo"
+          id="add-todo-input"
+          onfocus="this.value=''"
+          value="enter todo here..."
+        />
+        <button id="add-todo-btn" class="btn btn-success">Submit</button>
+      </div>
     </section>
   </body>
 </html>

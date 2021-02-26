@@ -43,6 +43,7 @@ const db = firebase.firestore();
 const addTodo = document.getElementById("add-todo-btn"); // create thing
 const todoList = document.getElementById("todo-list"); // thing list
 const todoInput = document.getElementById("add-todo-input");
+let deleteTodo;
 
 let inputValue;
 todoInput.addEventListener("change", (event) => {
@@ -64,7 +65,6 @@ auth.onAuthStateChanged((user) => {
   if (user) {
     // database reference
     thingsRef = db.collection("todos");
-    // createThing.onClick
     addTodo.addEventListener("click", (event) => {
       const { serverTimestamp } = firebase.firestore.FieldValue;
       thingsRef.add({
@@ -72,16 +72,19 @@ auth.onAuthStateChanged((user) => {
         name: inputValue,
         createdAt: serverTimestamp(),
       });
+      todoInput.innerText = "";
     });
+
     // onSnapshot runs when data changes
     unsubscribe = thingsRef
       .where("uid", "==", user.uid)
-      // .orderBy("createdAt")
+      .orderBy("createdAt")
       .onSnapshot((querySnapshot) => {
         // map results to an array of li elements
         const items = querySnapshot.docs.map((doc) => {
           return `<li>${doc.data().name}</li>`;
         });
+
         todoList.innerHTML = items.join("");
       });
   } else {

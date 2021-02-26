@@ -1,0 +1,46 @@
+li {
+  font-size: larger;
+}
+
+.btn-primary {
+  background-color: skyblue;
+  border-radius: 10%;
+}
+
+.btn-primary:hover {
+  font-weight: 900;
+}
+
+.delete-todo-button {
+  font-size: 0.1em;
+  border-radius: 10%;
+  margin: 1em;
+}
+.delete-todo-button:hover {
+  font-weight: 800;
+}
+
+#add-todo-btn {
+  background-color: rgb(96, 199, 96);
+  width: 7em;
+  margin: 1em;
+  border-radius: 10%;
+}
+
+#add-todo-btn:hover {
+  font-weight: 900;
+}
+
+#add-todo-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#add-todo-input {
+  width: 10em;
+  margin: 0.5em;
+}
+
+#add-todo-label {
+  margin-top: 0.5em;
+}
